@@ -1,0 +1,14 @@
+{
+  "name": "rock-paper-scissors",
+  "version": "1.0.0",
+  "description": "An application created for practice with HTML, CSS preprocessor SCSS (SASS) and JS.",
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.80.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jakub Jurkian",
+  "license": "ISC"
+}

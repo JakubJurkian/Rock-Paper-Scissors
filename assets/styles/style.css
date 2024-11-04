@@ -1,0 +1,116 @@
+:root {
+  --main-bg-color: rgba(255, 255, 255, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  user-select: none;
+}
+
+body {
+  background-image: linear-gradient(#12100e, #2b4162);
+  min-height: 100vh;
+}
+
+.container {
+  width: 98%;
+  min-width: 350px;
+  margin: 0.4rem auto;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--main-bg-color);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.players {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 4px solid;
+  border-image: linear-gradient(45deg, #5468ff, #5adaff) 1;
+  border-bottom: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: var(--main-bg-color);
+}
+
+.player,
+.computer {
+  height: 90px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+}
+
+.computer-points {
+  order: -1;
+}
+
+.player-points,
+.computer-points {
+  font-size: 3rem;
+}
+
+.players-choices {
+  display: flex;
+  border-top: 1px solid var(--main-bg-color);
+  padding: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--main-bg-color);
+}
+
+.players-choices-text {
+  margin: 0 0.2rem;
+  font-weight: 900;
+  text-shadow: 0 2px 1px rgba(24, 5, 55, 0.4), -1px 3px 1px rgba(14, 5, 30, 0.4), -2px 5px 1px rgba(156, 125, 208, 0.4);
+}
+
+.player-choice,
+.computer-choice {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem;
+  border-radius: 16px;
+  width: 140px;
+  height: 120px;
+  box-shadow: rgba(0, 0, 23, 0.4) 0px 10px 20px, rgba(0, 1, 68, 0.4) 0px 6px 6px;
+}
+
+.buttons {
+  border-top: 1px solid var(--main-bg-color);
+  padding: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--main-bg-color);
+}
+
+.btn {
+  padding: 1rem;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  width: 105px;
+  height: 100px;
+  box-shadow: rgba(0, 0, 23, 0.4) 0px 10px 20px, rgba(0, 1, 68, 0.4) 0px 6px 6px;
+}
+
+.paper {
+  padding: 0 12px;
+}
+
+.scissors {
+  padding: 8px 8px 0 8px;
+}/*# sourceMappingURL=style.css.map */

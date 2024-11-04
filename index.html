@@ -1,11 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <script src="assets/scripts/script.js" defer></script>
+  </head>
+  <body>
+    <main class="container">
+      <section class="players">
+        <div class="player">
+          <img src="./assets/images/player.svg" alt="player" />
+          <p class="player-points">0</p>
+        </div>
+        <div class="computer">
+          <img src="./assets/images/robot.svg" alt="computer" />
+          <p class="computer-points">0</p>
+        </div>
+      </section>
+
+      <section class="players-choices">
+        <div class="player-choice">
+          <img
+            class="player-choice-img"
+            src="./assets/images/field.svg"
+            alt="player-choice"
+          />
+        </div>
+        <p class="players-choices-text">VS</p>
+        <div class="computer-choice">
+          <img
+            class="computer-choice-img"
+            src="./assets/images/field.svg"
+            alt="computer-choice"
+          />
+        </div>
+      </section>
+
+      <section class="buttons">
+        <div class="btn rock">
+          <img src="./assets/images/rock.svg" alt="rock" />
+        </div>
+        <div class="btn paper">
+          <img src="./assets/images/paper.svg" alt="paper" />
+        </div>
+        <div class="btn scissors">
+          <img src="./assets/images/scissors.svg" alt="scissors" />
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
