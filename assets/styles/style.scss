@@ -1,6 +1,4 @@
-:root {
-  --main-bg-color: rgba(255, 255, 255, 0.15);
-}
+$color-primary: rgba(255, 255, 255, 0.15);
 
 * {
   box-sizing: border-box;
@@ -17,14 +15,14 @@ body {
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   width: 98%;
   min-width: 350px;
   margin: 0.4rem auto;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  background-color: var(--main-bg-color);
+  background-color: $color-primary;
   backdrop-filter: blur(5px);
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
 }
@@ -44,7 +42,7 @@ img {
   border-bottom: none;
   font-size: 1rem;
   padding: 0.5rem;
-  background-color: var(--main-bg-color);
+  background-color: $color-primary;
 }
 
 .player,
@@ -64,14 +62,13 @@ img {
   font-size: 3rem;
 }
 
-
 .players-choices {
   display: flex;
-  border-top: 1px solid var(--main-bg-color);
+  border-top: 1px solid $color-primary;
   padding: 1.5rem;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--main-bg-color);
+  background-color: $color-primary;
 }
 
 .players-choices-text {
@@ -92,11 +89,11 @@ img {
 }
 
 .buttons {
-  border-top: 1px solid var(--main-bg-color);
+  border-top: 1px solid $color-primary;
   padding: 0.6rem;
   display: flex;
   justify-content: space-between;
-  background-color: var(--main-bg-color);
+  background-color: $color-primary;
 }
 
 .btn {
@@ -109,10 +106,33 @@ img {
   box-shadow: rgba(0, 0, 23, 0.4) 0px 10px 20px, rgba(0, 1, 68, 0.4) 0px 6px 6px;
 }
 
-.paper {
-  padding: 0 12px;
+.result {
+  overflow: hidden;
+  font-size: 2rem;
+  width: 98%;
+  min-width: 350px;
+  margin: 0.5rem auto;
+  background-color: $color-primary;
+  backdrop-filter: blur(5px);
+  text-align: center;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
-.scissors {
-  padding: 8px 8px 0 8px;
+.border-helper {
+  padding: 1rem;
+  border: 5px solid;
+  border-top: none;
+  border-image: linear-gradient(45deg, #5adaff, #5468ff) 1;
+}
+
+.result-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.reset-btn {
+  margin-top: 0.5rem;
+  width: 100%;
 }
