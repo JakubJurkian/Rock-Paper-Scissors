@@ -1,5 +1,16 @@
 $color-primary: rgba(255, 255, 255, 0.15);
 
+@mixin box-styles {
+  overflow: hidden;
+  width: 98%;
+  min-width: 350px;
+  margin: 0.5rem auto;
+  background-color: $color-primary;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -15,16 +26,9 @@ body {
 }
 
 .container {
+  @include box-styles;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  width: 98%;
-  min-width: 350px;
-  margin: 0.4rem auto;
-  border-radius: 8px;
-  background-color: $color-primary;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
 }
 
 img {
@@ -107,16 +111,9 @@ img {
 }
 
 .result {
-  overflow: hidden;
+  @include box-styles;
   font-size: 2rem;
-  width: 98%;
-  min-width: 350px;
-  margin: 0.5rem auto;
-  background-color: $color-primary;
-  backdrop-filter: blur(5px);
   text-align: center;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
 }
 
 .border-helper {
@@ -135,4 +132,29 @@ img {
 .reset-btn {
   margin-top: 0.5rem;
   width: 100%;
+}
+
+.button-primary {
+  appearance: none;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #5adaff 0,
+    #5468ff 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  color: #fff;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  width: 50%;
+  height: 70px;
+  padding: 0 1rem;
+  position: relative;
+  transition: all 1s;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  text-align: center;
+  font-size: 1.2rem;
 }
