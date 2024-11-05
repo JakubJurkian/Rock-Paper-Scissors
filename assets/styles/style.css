@@ -38,7 +38,6 @@ img {
   border: 4px solid;
   border-image: linear-gradient(45deg, #5468ff, #5adaff) 1;
   border-bottom: none;
-  font-size: 1rem;
   padding: 0.5rem;
   background-color: rgba(255, 255, 255, 0.15);
 }
@@ -87,7 +86,7 @@ img {
 
 .buttons {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0.6rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   background-color: rgba(255, 255, 255, 0.15);
@@ -101,6 +100,10 @@ img {
   width: 105px;
   height: 100px;
   box-shadow: rgba(0, 0, 23, 0.4) 0px 10px 20px, rgba(0, 1, 68, 0.4) 0px 6px 6px;
+  margin: 0.1rem;
+}
+.btn:active {
+  transform: translateY(2px);
 }
 
 .result {
@@ -129,11 +132,6 @@ img {
   gap: 10px;
 }
 
-.reset-btn {
-  margin-top: 0.5rem;
-  width: 100%;
-}
-
 .button-primary {
   appearance: none;
   background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
@@ -152,4 +150,31 @@ img {
   user-select: none;
   text-align: center;
   font-size: 1.2rem;
+}
+.button-primary:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+.button-primary:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+.button-primary:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+.button-primary:disabled {
+  background-image: none;
+  background-color: #9c9fb8;
+  color: rgb(230, 230, 230);
+  cursor: not-allowed;
+}
+
+.result-btn {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.text-result {
+  margin-bottom: 0.8rem;
+  font-size: 2.5rem;
 }/*# sourceMappingURL=style.css.map */
