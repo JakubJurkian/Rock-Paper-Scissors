@@ -48,7 +48,7 @@ img {
   background-color: $color-primary;
 }
 
-.player,
+.user,
 .computer {
   height: 90px;
   width: 120px;
@@ -60,7 +60,7 @@ img {
   order: -1;
 }
 
-.player-points,
+.user-points,
 .computer-points {
   font-size: 3rem;
 }
@@ -81,7 +81,7 @@ img {
     -2px 5px 1px rgba(156, 125, 208, 0.4);
 }
 
-.player-choice,
+.user-choice,
 .computer-choice {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 0.5rem;
@@ -127,7 +127,7 @@ img {
   border-image: linear-gradient(45deg, #5adaff, #5468ff) 1;
 }
 
-.result-buttons {
+.operation-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;

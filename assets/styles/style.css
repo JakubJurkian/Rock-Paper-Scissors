@@ -42,7 +42,7 @@ img {
   background-color: rgba(255, 255, 255, 0.15);
 }
 
-.player,
+.user,
 .computer {
   height: 90px;
   width: 120px;
@@ -54,7 +54,7 @@ img {
   order: -1;
 }
 
-.player-points,
+.user-points,
 .computer-points {
   font-size: 3rem;
 }
@@ -74,7 +74,7 @@ img {
   text-shadow: 0 2px 1px rgba(24, 5, 55, 0.4), -1px 3px 1px rgba(14, 5, 30, 0.4), -2px 5px 1px rgba(156, 125, 208, 0.4);
 }
 
-.player-choice,
+.user-choice,
 .computer-choice {
   background-color: rgba(255, 255, 255, 0.9);
   padding: 0.5rem;
@@ -126,7 +126,7 @@ img {
   border-image: linear-gradient(45deg, #5adaff, #5468ff) 1;
 }
 
-.result-buttons {
+.operation-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;
