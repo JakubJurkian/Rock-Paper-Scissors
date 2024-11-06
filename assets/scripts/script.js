@@ -3,7 +3,8 @@ const $paperBtn = $('.paper');
 const $scissorsBtn = $('.scissors');
 const $userChoiceImg = $('.user-choice-img');
 const $computerChoiceImg = $('.computer-choice-img');
-const $resultbtn = $('.result-btn');
+const $resetBtn = $('.reset-btn');
+const $resultBtn = $('.result-btn');
 const $resultText = $('.text-result');
 const $userAvatar = $('.user img');
 const $computerAvatar = $('.computer img');
@@ -38,6 +39,21 @@ const gameResult = (user, computer) => {
   ) {
     return 'You lost!';
   }
+};
+
+const newGame = () => {
+  playerChoice = null;
+  computerChoice = null;
+  
+  if ($userChoiceImg.hasClass('choice-img-show') && 
+  $computerChoiceImg.hasClass('choice-img-show')) {
+    $userChoiceImg.removeClass('choice-img-show');
+    $computerChoiceImg.removeClass('choice-img-show');
+  }
+
+  $userChoiceImg.attr('src', `./assets/images/field.svg`);
+  $computerChoiceImg.attr('src', `./assets/images/field.svg`);
+  $resultText.text(null);
 };
 
 const updatePoints = (pointsField, points, avatar) => {
@@ -86,10 +102,19 @@ $rockBtn.on('click', () => selectHandler($userChoiceImg, 'rock'));
 $paperBtn.on('click', () => selectHandler($userChoiceImg, 'paper'));
 $scissorsBtn.on('click', () => selectHandler($userChoiceImg, 'scissors'));
 
-$resultbtn.on('click', () => {
+$resultBtn.on('click', () => {
   if (!userChoice) return;
 
   selectHandler($computerChoiceImg);
   $resultText.text(gameResult(userChoice, computerChoice));
   addingPoints(userChoice, computerChoice);
+});
+
+$resetBtn.on('click', () => {
+  newGame();
+  userPoints = 0;
+  computerPoints = 0;
+  $userPointsField.text(userPoints);
+  $computerPointsField.text(computerPoints);
+  $resetBtn.text('Reset Game');
 });

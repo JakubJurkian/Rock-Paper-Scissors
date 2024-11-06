@@ -38,7 +38,6 @@ img {
 
 .players {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border: 4px solid;
@@ -50,10 +49,10 @@ img {
 
 .user,
 .computer {
-  height: 90px;
-  width: 120px;
   display: flex;
   align-items: center;
+  height: 90px;
+  width: 160px;
 }
 
 .computer-points {
@@ -62,7 +61,12 @@ img {
 
 .user-points,
 .computer-points {
-  font-size: 3rem;
+  font-size: 2.5rem;
+  width: 90%;
+}
+
+.computer-points {
+  text-align: right;
 }
 
 .players-choices {
@@ -191,3 +195,8 @@ img {
   font-size: 2.5rem;
 }
 
+@media (max-width: 3rem) {
+  p {
+    font-size: 2rem;
+  }
+}
