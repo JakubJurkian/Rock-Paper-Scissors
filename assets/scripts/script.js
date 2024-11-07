@@ -1,8 +1,6 @@
 const $rockBtn = $('.rock');
 const $paperBtn = $('.paper');
 const $scissorsBtn = $('.scissors');
-const $userChoiceImg = $('.user-choice-img');
-const $computerChoiceImg = $('.computer-choice-img');
 const $resetBtn = $('.reset-btn');
 const $clearBtn = $('.clear-btn');
 const $resultBtn = $('.result-btn');
@@ -11,37 +9,24 @@ const $userAvatar = $('.user img');
 const $computerAvatar = $('.computer img');
 const $userPointsField = $('.user-points');
 const $computerPointsField = $('.computer-points');
+const $computerChoiceImg = $('.computer-choice-img');
+const $userChoiceImg = $('.user-choice-img');
 
 const COMPUTER_POSSIBLE_CHOICES = ['rock', 'paper', 'scissors'];
-
-let selectingBtnAfterCheckingResult = false;
 
 let userChoice = null,
   computerChoice = null;
 let userPoints = 0,
   computerPoints = 0;
+let selectingBtnAfterCheckingResult = false;
 
 const gameResult = (user, computer) => {
-  if (
-    (user === 'rock' && computer === 'rock') ||
-    (user === 'paper' && computer === 'paper') ||
-    (user === 'scissors' && computer === 'scissors')
-  )
-    return 'Draw!';
-  if (
-    (user === 'rock' && computer === 'scissors') ||
-    (user === 'paper' && computer === 'rock') ||
-    (user === 'scissors' && computer === 'paper')
-  ) {
-    return 'You won!';
-  }
-  if (
-    (user === 'scissors' && computer === 'rock') ||
-    (user === 'rock' && computer === 'paper') ||
-    (user === 'paper' && computer === 'scissors')
-  ) {
-    return 'You lost!';
-  }
+  const outcomes = {
+    rock: { rock: 'Draw!', scissors: 'You won!', paper: 'You lost!' },
+    paper: { paper: 'Draw!', rock: 'You won!', scissors: 'You lost!' },
+    scissors: { scissors: 'Draw!', paper: 'You won!', rock: 'You lost!' },
+  };
+  return outcomes[user][computer];
 };
 
 const newGame = async ($btn) => {
@@ -74,17 +59,19 @@ const newGame = async ($btn) => {
 const updatePoints = async ($pointsField, points, $avatar) => {
   await loading(300);
   points += 1;
-  $pointsField.addClass('hide');
   $pointsField.text(points);
+
+  $pointsField.addClass('hide');
   await loading(200);
   $pointsField.removeClass('hide');
+
   $avatar.addClass('zoom-in');
   await loading(400);
   $avatar.removeClass('zoom-in');
   return points;
 };
 
-const addingPoints = async (user, computer) => {
+const handlePoints = async (user, computer) => {
   const result = gameResult(user, computer);
   if (result === 'You won!') {
     userPoints = await updatePoints($userPointsField, userPoints, $userAvatar);
@@ -130,8 +117,8 @@ $scissorsBtn.on('click', () => selectHandler($userChoiceImg, 'scissors'));
 
 $resultBtn.on('click', async () => {
   if (!userChoice) return;
-  $resultBtn.addClass('lds-dual-ring');
   $resultBtn.text('');
+  $resultBtn.addClass('lds-dual-ring');
   await loading(800);
   selectHandler($computerChoiceImg);
   $resultText.text(gameResult(userChoice, computerChoice));
@@ -142,7 +129,7 @@ $resultBtn.on('click', async () => {
   $resultBtn.removeClass('lds-dual-ring');
   $resultBtn.text('Run Game');
 
-  await addingPoints(userChoice, computerChoice);
+  await handlePoints(userChoice, computerChoice);
   if (userPoints > 0 || computerPoints > 0) {
     $resetBtn.attr('disabled', false);
   }
@@ -174,10 +161,5 @@ $clearBtn.on('click', async () => {
   $clearBtn.text('New Game');
 });
 
-const loading = (miliseconds) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve();
-    }, miliseconds);
-  });
-};
+const loading = (milliseconds) =>
+  new Promise((resolve) => setTimeout(resolve, milliseconds));
