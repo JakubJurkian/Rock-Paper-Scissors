@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   color: white;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   user-select: none;
 }
 
@@ -49,6 +49,16 @@ img {
   width: 160px;
 }
 
+.user img,
+.computer img {
+  transition: all 0.4s;
+  will-change: transform;
+}
+
+.zoom-in {
+  transform: scale(1.1);
+}
+
 .computer-points {
   order: -1;
 }
@@ -57,6 +67,13 @@ img {
 .computer-points {
   font-size: 2.5rem;
   width: 90%;
+  transition: all 0.4s;
+  will-change: opacity;
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
 }
 
 .computer-points {
@@ -75,7 +92,19 @@ img {
 .players-choices-text {
   margin: 0 0.2rem;
   font-weight: 900;
-  text-shadow: 0 2px 1px rgba(24, 5, 55, 0.4), -1px 3px 1px rgba(14, 5, 30, 0.4), -2px 5px 1px rgba(156, 125, 208, 0.4);
+  text-shadow: 0 2px 1px rgba(24, 5, 55, 0.4), -1px 3px 1px rgba(14, 5, 30, 0.4),
+    -2px 5px 1px rgba(156, 125, 208, 0.4);
+}
+
+.user-choice-img,
+.computer-choice-img {
+  opacity: 0;
+  transition: opacity 0.3s;
+  will-change: opacity;
+}
+
+.choice-img-show {
+  opacity: 1;
 }
 
 .user-choice,
@@ -138,13 +167,18 @@ img {
 
 .button-primary {
   appearance: none;
-  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #5adaff 0,
+    #5468ff 100%
+  );
   border: 0;
   border-radius: 6px;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
   color: #fff;
   cursor: pointer;
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'JetBrains Mono', monospace;
   width: 50%;
   height: 70px;
   padding: 0 1rem;
@@ -156,10 +190,12 @@ img {
   font-size: 1.2rem;
 }
 .button-primary:focus {
-  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
 }
 .button-primary:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 .button-primary:active {
@@ -181,10 +217,19 @@ img {
 .text-result {
   margin-bottom: 0.8rem;
   font-size: 2.5rem;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.5s;
+  will-change: opacity, max-height;
+}
+
+.text-result-show {
+  opacity: 1;
+  max-height: 4rem;
 }
 
 @media (max-width: 3rem) {
   p {
     font-size: 2rem;
   }
-}/*# sourceMappingURL=style.css.map */
+} /*# sourceMappingURL=style.css.map */
