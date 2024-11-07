@@ -4,6 +4,7 @@ const $scissorsBtn = $('.scissors');
 const $userChoiceImg = $('.user-choice-img');
 const $computerChoiceImg = $('.computer-choice-img');
 const $resetBtn = $('.reset-btn');
+const $clearBtn = $('.clear-btn');
 const $resultBtn = $('.result-btn');
 const $resultText = $('.text-result');
 const $userAvatar = $('.user img');
@@ -12,6 +13,8 @@ const $userPointsField = $('.user-points');
 const $computerPointsField = $('.computer-points');
 
 const COMPUTER_POSSIBLE_CHOICES = ['rock', 'paper', 'scissors'];
+
+let selectingBtnAfterCheckingResult = false;
 
 let userChoice = null,
   computerChoice = null;
@@ -42,11 +45,14 @@ const gameResult = (user, computer) => {
 };
 
 const newGame = () => {
-  playerChoice = null;
+  userChoice = null;
   computerChoice = null;
-  
-  if ($userChoiceImg.hasClass('choice-img-show') && 
-  $computerChoiceImg.hasClass('choice-img-show')) {
+  selectingBtnAfterCheckingResult = false;
+
+  if (
+    $userChoiceImg.hasClass('choice-img-show') &&
+    $computerChoiceImg.hasClass('choice-img-show')
+  ) {
     $userChoiceImg.removeClass('choice-img-show');
     $computerChoiceImg.removeClass('choice-img-show');
   }
@@ -77,6 +83,8 @@ const addingPoints = (user, computer) => {
 };
 
 const selectHandler = (playerChoiceImg, choice = null) => {
+  if (selectingBtnAfterCheckingResult) return;
+
   if (playerChoiceImg.hasClass('choice-img-show')) {
     playerChoiceImg.removeClass('choice-img-show');
   }
@@ -96,6 +104,7 @@ const selectHandler = (playerChoiceImg, choice = null) => {
     `./assets/images/${choice ? choice : computerChoice}.svg`
   );
   playerChoiceImg.addClass('choice-img-show');
+  $resultBtn.attr('disabled', false);
 };
 
 $rockBtn.on('click', () => selectHandler($userChoiceImg, 'rock'));
@@ -108,6 +117,13 @@ $resultBtn.on('click', () => {
   selectHandler($computerChoiceImg);
   $resultText.text(gameResult(userChoice, computerChoice));
   addingPoints(userChoice, computerChoice);
+  $resultBtn.attr('disabled', true);
+  $clearBtn.attr('disabled', false);
+  if (userPoints > 0 || computerPoints > 0) {
+    $resetBtn.attr('disabled', false);
+  }
+
+  selectingBtnAfterCheckingResult = true;
 });
 
 $resetBtn.on('click', () => {
@@ -116,5 +132,11 @@ $resetBtn.on('click', () => {
   computerPoints = 0;
   $userPointsField.text(userPoints);
   $computerPointsField.text(computerPoints);
-  $resetBtn.text('Reset Game');
+  $resetBtn.attr('disabled', true);
+  $clearBtn.attr('disabled', true);
+});
+
+$clearBtn.on('click', () => {
+  newGame();
+  $clearBtn.attr('disabled', true);
 });
