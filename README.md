@@ -1,11 +1,5 @@
 # Rock-Paper-Scissors
 An application created for practice with HTML, CSS preprocessor SCSS (SASS) and JS with Library jQuery.
-
-## ![My Skills](https://skillicons.dev/icons?i=html) HTML:
-- Building correct HTML structure & using HTML tags right,
-- Semantic HTML,
-- Connecting HTML document with assets like script or styles,
-- and more;
   
 ## ![My Skills](https://skillicons.dev/icons?i=scss) SCSS:
 - Nesting styles for a more readable and hierarchical structure,
@@ -13,7 +7,7 @@ An application created for practice with HTML, CSS preprocessor SCSS (SASS) and 
 - Defining global variables like $color-primary to ensure consistent color schemes throughout the project.
 - and more;
 
-## ![My Skills](https://skillicons.dev/icons?i=jquery) Jquery Library:
+## ![My Skills](https://skillicons.dev/icons?i=jquery) jQuery Library:
 - Simplifying DOM manipulation with jQuery selectors and methods,
 - Managing classes and styles dynamically based on user interaction,
 - Implementing event handling for actions like click,
