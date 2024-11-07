@@ -44,11 +44,13 @@ const gameResult = (user, computer) => {
   }
 };
 
-const newGame = async () => {
-  $clearBtn.attr('disabled', true);
+const newGame = async ($btn) => {
+  $btn.addClass('lds-dual-ring');
   await loading(800);
   userChoice = null;
   computerChoice = null;
+  $clearBtn.attr('disabled', true);
+  $resultBtn.attr('disabled', true);
   selectingBtnAfterCheckingResult = false;
 
   if ($resultText.hasClass('text-result-show')) {
@@ -66,18 +68,19 @@ const newGame = async () => {
   $userChoiceImg.attr('src', `./assets/images/field.svg`);
   $computerChoiceImg.attr('src', `./assets/images/field.svg`);
   $resultText.text(null);
+  $btn.removeClass('lds-dual-ring');
 };
 
-const updatePoints = async (pointsField, points, avatar) => {
+const updatePoints = async ($pointsField, points, $avatar) => {
   await loading(300);
   points += 1;
-  pointsField.addClass('hide');
+  $pointsField.addClass('hide');
+  $pointsField.text(points);
   await loading(200);
-  pointsField.text(points);
-  pointsField.removeClass('hide');
-  avatar.addClass('zoom-in');
+  $pointsField.removeClass('hide');
+  $avatar.addClass('zoom-in');
   await loading(400);
-  avatar.removeClass('zoom-in');
+  $avatar.removeClass('zoom-in');
   return points;
 };
 
@@ -95,29 +98,29 @@ const addingPoints = async (user, computer) => {
   }
 };
 
-const selectHandler = async (playerChoiceImg, choice = null) => {
+const selectHandler = async ($playerChoiceImg, choice = null) => {
   if (selectingBtnAfterCheckingResult) return;
 
-  if (playerChoiceImg.hasClass('choice-img-show')) {
-    playerChoiceImg.removeClass('choice-img-show');
+  if ($playerChoiceImg.hasClass('choice-img-show')) {
+    $playerChoiceImg.removeClass('choice-img-show');
     await loading(300);
   }
 
-  if (playerChoiceImg === $computerChoiceImg) {
+  if ($playerChoiceImg === $computerChoiceImg) {
     computerChoice =
       COMPUTER_POSSIBLE_CHOICES[
         Math.floor(Math.random() * COMPUTER_POSSIBLE_CHOICES.length)
       ];
-    playerChoiceImg.css('transform', 'scaleX(-1)');
+    $playerChoiceImg.css('transform', 'scaleX(-1)');
   } else {
     userChoice = choice;
   }
 
-  playerChoiceImg.attr(
+  $playerChoiceImg.attr(
     'src',
     `./assets/images/${choice ? choice : computerChoice}.svg`
   );
-  playerChoiceImg.addClass('choice-img-show');
+  $playerChoiceImg.addClass('choice-img-show');
   $resultBtn.attr('disabled', false);
 };
 
@@ -127,35 +130,48 @@ $scissorsBtn.on('click', () => selectHandler($userChoiceImg, 'scissors'));
 
 $resultBtn.on('click', async () => {
   if (!userChoice) return;
-
+  $resultBtn.addClass('lds-dual-ring');
+  $resultBtn.text('');
   await loading(800);
-
   selectHandler($computerChoiceImg);
   $resultText.text(gameResult(userChoice, computerChoice));
-  addingPoints(userChoice, computerChoice);
   $resultBtn.attr('disabled', true);
   $clearBtn.attr('disabled', false);
+
+  $resultText.addClass('text-result-show');
+  $resultBtn.removeClass('lds-dual-ring');
+  $resultBtn.text('Run Game');
+
+  await addingPoints(userChoice, computerChoice);
   if (userPoints > 0 || computerPoints > 0) {
     $resetBtn.attr('disabled', false);
   }
-  $resultText.addClass('text-result-show');
 
   selectingBtnAfterCheckingResult = true;
 });
 
 $resetBtn.on('click', async () => {
-  await newGame();
   userPoints = 0;
   computerPoints = 0;
   $userPointsField.text(userPoints);
   $computerPointsField.text(computerPoints);
   $resetBtn.attr('disabled', true);
   $clearBtn.attr('disabled', true);
+
+  $resetBtn.text('');
+  $userPointsField.addClass('hide');
+  $computerPointsField.addClass('hide');
+  await newGame($resetBtn);
+  $userPointsField.removeClass('hide');
+  $computerPointsField.removeClass('hide');
+  $resetBtn.text('Reset Game');
 });
 
 $clearBtn.on('click', async () => {
-  await newGame();
+  $clearBtn.text('');
+  await newGame($clearBtn);
   $clearBtn.attr('disabled', true);
+  $clearBtn.text('New Game');
 });
 
 const loading = (miliseconds) => {
