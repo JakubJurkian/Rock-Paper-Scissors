@@ -140,8 +140,6 @@ $resultBtn.on('click', async () => {
 $resetBtn.on('click', async () => {
   userPoints = 0;
   computerPoints = 0;
-  $userPointsField.text(userPoints);
-  $computerPointsField.text(computerPoints);
   $resetBtn.attr('disabled', true);
   $clearBtn.attr('disabled', true);
 
@@ -149,6 +147,8 @@ $resetBtn.on('click', async () => {
   $userPointsField.addClass('hide');
   $computerPointsField.addClass('hide');
   await newGame($resetBtn);
+  $userPointsField.text(userPoints);
+  $computerPointsField.text(computerPoints);
   $userPointsField.removeClass('hide');
   $computerPointsField.removeClass('hide');
   $resetBtn.text('Reset Game');
